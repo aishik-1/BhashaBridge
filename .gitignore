@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Node dependencies
+node_modules/
+frontend/node_modules/
+
+# Audio files and test media
+*.m4a
+*.aiff
+*.tmp
+recordings/*.wav
+recordings/*.webm
+recordings/*.m4a
+responses/*.wav
+responses/*.aiff
+history/*.json
+
+# macOS system files
+.DS_Store
+
+# Keep directory structure
+!recordings/.gitkeep
+!responses/.gitkeep
+!history/.gitkeep
+frontend/node_modules

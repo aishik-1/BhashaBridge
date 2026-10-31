@@ -1,0 +1,969 @@
+# PROJECT: BHASHABRIDGE
+## Open-Source Multilingual Indian Language Learning Platform
+
+Act as a senior full-stack software engineer, UI/UX designer, language-learning product designer, database architect, accessibility specialist, and QA engineer.
+
+Build a complete, functional, responsive website called **BhashaBridge**.
+
+This is an open-source educational platform designed to help people learn Hindi, Bengali, and Marathi through English. The platform must work on desktop computers, laptops, tablets, and mobile phones, with special emphasis on accessibility, practical learning, and offline functionality.
+
+Do not build just a static landing page or UI mockup. Build a functional application with real navigation, actual lessons, vocabulary, quizzes, progress tracking, data persistence, and offline support.
+
+Make sensible implementation decisions independently. Do not stop after creating the homepage.
+
+---
+
+# 1. THE CORE PROBLEM
+
+Many people in India want to learn languages spoken in other Indian states but lack access to affordable, high-quality, beginner-friendly learning resources.
+
+BhashaBridge should help learners:
+
+- Learn useful everyday vocabulary.
+- Understand meanings in English.
+- Read Hindi, Bengali, and Marathi scripts.
+- Learn pronunciation.
+- Understand common phrases.
+- Practice sentence formation.
+- Complete interactive quizzes.
+- Track their learning progress.
+- Access previously downloaded lessons without internet access.
+- Learn at their own pace without requiring a paid subscription.
+
+The website must be useful to complete beginners.
+
+The primary teaching language is English.
+
+The target learning languages are Hindi, Bengali, and Marathi.
+
+Do not mix the three target languages within a lesson unless the user explicitly selects a comparison lesson.
+
+---
+
+# 2. STRICT TECHNOLOGY REQUIREMENTS
+
+IMPORTANT: DO NOT USE TYPESCRIPT.
+
+Use the following technology stack.
+
+## Frontend
+
+- HTML5 for page structure.
+- CSS3 for styling and responsive layouts.
+- Vanilla JavaScript using standard browser APIs.
+- No TypeScript files.
+- No JSX or TSX.
+- No React unless explicitly required later.
+- No unnecessary frontend frameworks.
+- Use CSS Grid and Flexbox for layouts.
+- Use ES modules where appropriate.
+- Use semantic HTML and accessible controls.
+
+All application logic must be written in regular JavaScript.
+
+Use separate HTML, CSS, and JavaScript files rather than placing the entire website into one giant file.
+
+## Backend
+
+- Python 3.
+- Flask as the web framework.
+- Flask Blueprints or a similarly organized modular architecture.
+- REST-style JSON endpoints where appropriate.
+- Python requests or another suitable HTTP client for Wikimedia API requests.
+- Environment variables for configuration and secrets.
+
+## Database
+
+- SQLite for the initial version.
+- SQLAlchemy for database models and queries.
+- Flask-Migrate or an appropriate migration strategy if needed.
+
+The application must preserve user progress between sessions.
+
+## Testing
+
+- pytest for backend testing.
+- Python's unittest or pytest for business logic.
+- JavaScript tests for important frontend behavior using a suitable lightweight test runner.
+- Integration tests for important API endpoints.
+
+## Deployment
+
+Prepare the application for deployment on a Python-compatible hosting platform.
+
+Include:
+- requirements.txt
+- .env.example
+- .gitignore
+- README.md
+- Database initialization instructions.
+- Production startup instructions.
+- Configuration for a production WSGI server such as Gunicorn.
+
+Never commit real API keys, passwords, or other secrets.
+
+Use pinned or appropriately constrained dependency versions where practical.
+
+Do not introduce a complex cloud infrastructure unless it is necessary.
+
+---
+
+# 3. WEBSITE DESIGN
+
+Create a polished, modern, welcoming educational interface.
+
+The website should feel like a professionally designed language-learning product rather than a generic AI-generated dashboard.
+
+## Visual direction
+
+Use:
+- A clean, warm, educational design.
+- Cream or light neutral backgrounds.
+- Deep green as a primary accent.
+- Subtle saffron and blue accents inspired by Indian visual culture.
+- Readable typography.
+- Generous spacing.
+- Rounded cards.
+- Subtle shadows.
+- Smooth but restrained animations.
+- Clear progress indicators.
+- Attractive illustrations for learning categories.
+
+Avoid:
+- Excessive gradients.
+- Unnecessary glassmorphism.
+- Excessive animations.
+- Overloaded dashboards.
+- Fake statistics.
+- Decorative elements that interfere with reading.
+- Overly complicated navigation.
+
+Use a consistent design system with reusable CSS variables for colors, spacing, borders, typography, and shadows.
+
+Ensure Hindi, Bengali, and Marathi scripts render correctly.
+
+Use appropriate Unicode-compatible fonts. Consider Noto Sans Devanagari for Hindi and Marathi, and Noto Sans Bengali for Bengali.
+
+Provide sensible font fallbacks.
+
+## Responsive design
+
+The application must work at:
+- Mobile phone widths.
+- Tablet widths.
+- Laptop widths.
+- Large desktop widths.
+
+Implement an accessible mobile navigation menu.
+
+Ensure that text, buttons, cards, and quiz controls remain usable on small screens.
+
+---
+
+# 4. REQUIRED PAGES
+
+Implement all the following pages.
+
+## A. Landing page
+
+Create a beautiful homepage with:
+
+Headline:
+"Every Indian language brings you closer to someone."
+
+Subheading:
+"Learn Hindi, Bengali, and Marathi through practical lessons, everyday conversations, and interactive practice—even offline."
+
+Primary button:
+"Start Learning"
+
+Secondary button:
+"Explore Languages"
+
+Include:
+- Three language cards.
+- A short explanation of the learning method.
+- A preview of an interactive vocabulary card.
+- A section explaining offline learning.
+- A section describing the open-source mission.
+- A preview of the learner dashboard.
+- A footer with About, Open Source, Data Sources, Privacy, and Contact links.
+
+Do not display fake user counts or invented success statistics.
+
+All navigation buttons must work.
+
+## B. Language selection page
+
+Create three distinct language cards.
+
+### Hindi
+Native name: हिन्दी
+Script: Devanagari
+Language code: hi
+
+### Bengali
+Native name: বাংলা
+Script: Bengali
+Language code: bn
+
+### Marathi
+Native name: मराठी
+Script: Devanagari
+Language code: mr
+
+Each card must show:
+- Native script.
+- Short introduction in English.
+- Beginner-friendly topics.
+- Available lessons.
+- Current progress.
+- A button to begin or continue learning.
+
+The selected language must persist when navigating between lessons.
+
+## C. Learner dashboard
+
+Display:
+- Current learning language.
+- Current course level.
+- Lessons completed.
+- Vocabulary learned.
+- Current learning streak.
+- Quiz performance.
+- Saved vocabulary.
+- Recommended next lesson.
+- Recently studied words.
+
+Calculate these values from actual stored data.
+
+Do not hardcode progress statistics.
+
+Provide a clear Continue Learning button.
+
+## D. Lesson library
+
+Organize lessons into categories:
+
+1. Greetings and introductions.
+2. Numbers and counting.
+3. Family and relationships.
+4. Food and drinks.
+5. Travel and transportation.
+6. Shopping and money.
+7. Time, dates, and days.
+8. Common verbs.
+9. Everyday questions.
+10. School and college.
+11. Work and professional life.
+12. Health and emergencies.
+13. Directions and locations.
+14. Feelings and emotions.
+15. Daily conversations.
+
+Each category must contain lessons appropriate for beginners.
+
+Show lesson completion status.
+
+Allow users to resume lessons.
+
+## E. Vocabulary learning page
+
+This is one of the most important features.
+
+Every vocabulary card should support the following fields:
+
+- English word or phrase.
+- Native-script word or phrase.
+- Transliteration into Latin script.
+- English meaning or explanation.
+- Part of speech where available.
+- Example sentence in the target language.
+- English translation of the example.
+- Pronunciation guidance.
+- Audio playback when available.
+- Source and attribution.
+- Save-to-vocabulary button.
+- Mark as learned button.
+
+Example structure:
+
+English: Water
+
+Hindi:
+पानी
+
+Transliteration:
+Pānī
+
+English meaning:
+Water.
+
+Example:
+मुझे पानी चाहिए।
+
+English translation:
+I need water.
+
+Bengali and Marathi lessons must contain their own verified translations and examples.
+
+Do not translate every language using the same unverified sentence template.
+
+Do not invent dictionary citations.
+
+Clearly distinguish dictionary definitions from your own educational explanations.
+
+Allow learners to move through vocabulary using:
+- Previous.
+- Next.
+- Reveal meaning.
+- Show example.
+- Mark as learned.
+- Save for revision.
+
+Provide a flashcard mode.
+
+## F. Pronunciation practice
+
+Implement:
+- A Listen button.
+- A Replay button.
+- A slow playback option when supported.
+- Transliteration.
+- Syllable or pronunciation guidance when reliable data is available.
+
+Use native browser speech synthesis as an optional pronunciation aid.
+
+Check available speech synthesis voices before selecting a language voice.
+
+Use appropriate BCP 47 language tags, such as:
+- hi-IN for Hindi.
+- bn-IN for Bengali.
+- mr-IN for Marathi.
+
+Do not assume every device has all three voices.
+
+If a suitable voice is unavailable, display a clear message and retain transliteration and written pronunciation guidance.
+
+If Wikimedia Commons provides a suitable audio file, use it only after verifying that it corresponds to the word and that its license permits reuse.
+
+Do not claim that browser-generated speech is a recording of a native speaker.
+
+Do not claim to evaluate a learner's pronunciation unless a real speech-recognition or pronunciation-evaluation implementation exists.
+
+## G. Interactive quizzes
+
+Implement multiple question types:
+
+1. Choose the correct translation.
+2. Match English words to native-script words.
+3. Select the correct transliteration.
+4. Fill in the missing word.
+5. Translate a simple phrase.
+6. Identify the meaning of a sentence.
+7. Review previously missed questions.
+
+Quiz requirements:
+- At least five questions per quiz.
+- Randomize question order where appropriate.
+- Show immediate feedback.
+- Explain correct answers.
+- Calculate scores accurately.
+- Allow the learner to retry.
+- Store quiz history.
+- Update progress after completion.
+
+Use verified vocabulary records.
+
+Do not generate quiz questions using random strings or unrelated vocabulary.
+
+## H. Sentence builder
+
+Create a beginner-friendly sentence-building activity.
+
+Present:
+- An English sentence.
+- A collection of target-language word tiles.
+- A space to arrange the tiles.
+- A Check Answer button.
+- Feedback explaining the correct answer.
+
+Support Hindi, Bengali, and Marathi separately.
+
+Handle multiple valid translations where appropriate.
+
+Do not mark a semantically valid alternative as incorrect simply because it differs from one fixed word order.
+
+For the initial release, use curated sentence exercises with known acceptable answers.
+
+## I. Saved words and revision
+
+Allow learners to save vocabulary for future revision.
+
+Provide:
+- Saved words.
+- Recently missed words.
+- Words marked as difficult.
+- A revision quiz.
+- A search box.
+- Filters by language and category.
+
+Persist all saved vocabulary in SQLite for registered users or in appropriate local storage for anonymous learners.
+
+## J. Progress and achievements
+
+Implement:
+- Lessons completed.
+- Words learned.
+- Quiz scores.
+- Study sessions.
+- Daily learning goals.
+- Learning streaks.
+- Beginner milestones.
+
+Achievements must be awarded through actual application logic.
+
+Do not award achievements merely because the dashboard was opened.
+
+Store the underlying events used to calculate progress.
+
+## K. Offline learning
+
+Offline access is a major product requirement.
+
+Implement a Progressive Web App using:
+- A web app manifest.
+- A service worker.
+- Cache Storage.
+- An offline fallback page.
+
+Cache essential application files and static assets.
+
+Provide an option to download or save supported lesson content for offline use.
+
+Store offline learning progress locally using IndexedDB or another appropriate browser storage mechanism.
+
+Synchronize locally recorded progress with the server when the user is online again, where account synchronization is implemented.
+
+Avoid overwriting newer progress with stale offline data.
+
+Provide visible online/offline status.
+
+Clearly explain which features work offline and which require internet access.
+
+Do not claim that online dictionary searches or AI features work offline unless they genuinely do.
+
+---
+
+# 5. WIKIMEDIA DATA INTEGRATION
+
+The application must use Wikimedia resources responsibly.
+
+Use the following approach.
+
+## A. Wiktionary for vocabulary
+
+Wiktionary is the preferred Wikimedia source for dictionary entries.
+
+Use suitable Wikimedia APIs to retrieve word information when available.
+
+Investigate:
+- The MediaWiki Action API.
+- Wiktionary entries.
+- Definitions and translations.
+- Available pronunciation information.
+- Available audio files.
+- Relevant language metadata.
+
+Use documented endpoints and follow API usage guidelines.
+
+Do not scrape pages aggressively.
+
+Do not invent API endpoints or assume every field is available for every language.
+
+Handle missing entries gracefully.
+
+## B. Wikipedia for contextual learning
+
+Use Wikipedia to enrich lessons with contextual information.
+
+For example:
+- A lesson about Indian festivals may link to a relevant encyclopedia article.
+- A lesson about geography may provide additional cultural context.
+- A lesson about a city may link to the relevant article.
+
+Use the Wikimedia REST API or MediaWiki Action API to retrieve relevant page summaries and metadata.
+
+Do not treat Wikipedia article titles as a complete dictionary.
+
+Do not automatically treat the first sentence of an encyclopedia article as the definition of an ordinary word.
+
+## C. Attribution
+
+For reused Wikimedia content, display appropriate source attribution.
+
+Where relevant, include:
+- Entry or article title.
+- Wikimedia project.
+- Source page.
+- Applicable license.
+- Author or revision information where required and available.
+
+Provide a dedicated Data Sources page explaining how Wikimedia content is used.
+
+Respect the license attached to the actual source content.
+
+Do not claim that all Wikimedia material has the same license.
+
+Do not use Wikimedia branding in a way that suggests official endorsement.
+
+## D. API behavior
+
+Implement:
+- Request timeouts.
+- Error handling.
+- Rate-limit handling.
+- Appropriate caching.
+- Retry logic with reasonable limits.
+- Clear user-facing error messages.
+- A local vocabulary fallback.
+
+Never make the entire learning application dependent on a live Wikimedia API request succeeding.
+
+Use an appropriate identifying User-Agent for requests when required by the selected API.
+
+Store reusable vocabulary records locally after successful retrieval, subject to the applicable licensing requirements.
+
+## E. Language correctness
+
+Verify the language of each retrieved entry.
+
+A search result in the wrong language must not silently become a vocabulary card.
+
+When an exact English-to-Hindi, English-to-Bengali, or English-to-Marathi translation cannot be verified, display an honest unavailable-data message rather than inventing an answer.
+
+---
+
+# 6. INITIAL VOCABULARY DATASET
+
+Create a starter dataset containing at least 150 curated vocabulary entries per language.
+
+Target:
+- 150 Hindi entries.
+- 150 Bengali entries.
+- 150 Marathi entries.
+
+This gives the application a useful starting library of at least 450 vocabulary records.
+
+Organize them across the lesson categories defined earlier.
+
+Each record should contain:
+
+{
+  "id": "unique-record-id",
+  "language": "hi",
+  "english": "water",
+  "native_script": "पानी",
+  "transliteration": "pānī",
+  "meaning_en": "Water",
+  "part_of_speech": "noun",
+  "example_native": "मुझे पानी चाहिए।",
+  "example_english": "I need water.",
+  "category": "food-and-drink",
+  "difficulty": "beginner",
+  "source_project": "Wiktionary",
+  "source_url": "",
+  "license": "",
+  "audio_url": null
+}
+
+This is an example schema, not a complete dataset.
+
+Create equivalent verified records for Bengali and Marathi.
+
+IMPORTANT:
+- Do not simply translate the Hindi dataset mechanically.
+- Do not populate the database with meaningless placeholder words.
+- Do not fabricate source URLs.
+- Do not assign licenses without checking the source.
+- Verify spelling, meaning, script, transliteration, and examples.
+- Include provenance information for reused data.
+- Where a word is manually curated, identify it as manually curated.
+- If a complete verified dataset cannot be created automatically, build a verified starter dataset and a repeatable import process.
+
+Include useful common words and phrases rather than rare or overly academic vocabulary.
+
+Use a documented import script to populate SQLite.
+
+---
+
+# 7. DATABASE DESIGN
+
+Create appropriate database models.
+
+At minimum, consider:
+
+## User
+- id
+- username
+- email, if accounts are enabled
+- password_hash, if accounts are enabled
+- created_at
+
+## Language
+- id
+- code
+- name
+- native_name
+- script
+
+## Lesson
+- id
+- language_id
+- title
+- description
+- category
+- difficulty
+- estimated_minutes
+
+## Vocabulary
+- id
+- language_id
+- lesson_id
+- english
+- native_script
+- transliteration
+- meaning_en
+- part_of_speech
+- example_native
+- example_english
+- source_project
+- source_url
+- license
+- audio_url
+
+## UserProgress
+- id
+- user_id
+- lesson_id
+- status
+- completed_at
+
+## SavedWord
+- id
+- user_id
+- vocabulary_id
+- saved_at
+
+## QuizAttempt
+- id
+- user_id
+- lesson_id
+- score
+- total_questions
+- attempted_at
+
+## StudySession
+- id
+- user_id
+- language_id
+- duration_seconds
+- started_at
+
+Add indexes, relationships, and appropriate constraints.
+
+Adapt the schema where necessary.
+
+For anonymous learners, support a local profile without forcing registration.
+
+Never store passwords in plaintext.
+
+If accounts are implemented, use secure password hashing and appropriate session security.
+
+---
+
+# 8. BACKEND API
+
+Create organized Flask routes and JSON endpoints.
+
+Include suitable endpoints for:
+
+- Listing supported languages.
+- Listing lessons by language.
+- Retrieving a lesson.
+- Searching vocabulary.
+- Retrieving a vocabulary entry.
+- Fetching contextual Wikimedia content.
+- Saving vocabulary.
+- Recording completed lessons.
+- Submitting quiz results.
+- Retrieving user progress.
+- Retrieving saved words.
+- Downloading lesson data for offline use.
+
+Use input validation.
+
+Return appropriate HTTP status codes.
+
+Do not trust user-submitted IDs, scores, or progress values without validation.
+
+Keep Wikimedia integration separate from the learning and progress logic.
+
+Provide a clear error response format.
+
+---
+
+# 9. ACCESSIBILITY AND INCLUSION
+
+Implement:
+- Keyboard-accessible navigation.
+- Visible focus indicators.
+- Appropriate color contrast.
+- Accessible form labels.
+- Semantic HTML.
+- Screen-reader-friendly feedback.
+- Reduced-motion support.
+- Text that can be resized without breaking the layout.
+- Large, comfortable touch targets.
+
+Avoid relying on color alone to communicate quiz correctness.
+
+The site should be useful for beginners who may not be familiar with the target language scripts.
+
+---
+
+# 10. OPEN-SOURCE REQUIREMENTS
+
+This project is intended to be an open-source educational tool.
+
+Prepare the repository with:
+- A clear README.
+- Setup instructions.
+- Architecture documentation.
+- A contribution guide.
+- Issue templates where appropriate.
+- A CODE_OF_CONDUCT.md.
+- A SECURITY.md.
+- An .env.example file.
+- Automated tests.
+- A license file.
+
+Use MIT for the original application code unless another license is intentionally selected.
+
+IMPORTANT: Do not assume that the MIT license automatically applies to third-party vocabulary, audio, or Wikimedia content.
+
+Document third-party licenses separately.
+
+Include clear instructions for contributors to add or correct vocabulary entries.
+
+The application must be usable without paid subscriptions.
+
+Do not introduce unnecessary paid APIs.
+
+Optional AI integrations must not be required for the core learning experience.
+
+---
+
+# 11. QUALITY ASSURANCE
+
+Write tests for:
+
+1. Language selection.
+2. Lesson retrieval.
+3. Vocabulary searching.
+4. Correct language-code handling.
+5. Quiz scoring.
+6. Saving words.
+7. Progress persistence.
+8. Invalid API input.
+9. Missing Wikimedia results.
+10. API timeouts.
+11. Offline fallback.
+12. Database initialization.
+
+Verify that:
+- The homepage loads.
+- Navigation works.
+- Every primary button performs its intended action.
+- Vocabulary cards display real records.
+- Quizzes calculate correct scores.
+- Progress survives page refreshes.
+- The application remains usable if Wikimedia is unavailable.
+- Offline functionality works after the first successful online load.
+- Hindi, Bengali, and Marathi characters render correctly.
+
+Do not claim that tests passed unless they were actually executed.
+
+Do not display fake success messages when an operation fails.
+
+---
+
+# 12. PROJECT STRUCTURE
+
+Use a clean, modular structure similar to this:
+
+bhashabridge/
+|
+|-- app.py
+|-- config.py
+|-- requirements.txt
+|-- .env.example
+|-- .gitignore
+|-- README.md
+|-- LICENSE
+|
+|-- models/
+|   |-- __init__.py
+|   |-- user.py
+|   |-- language.py
+|   |-- lesson.py
+|   |-- vocabulary.py
+|   |-- progress.py
+|
+|-- routes/
+|   |-- __init__.py
+|   |-- main_routes.py
+|   |-- language_routes.py
+|   |-- lesson_routes.py
+|   |-- vocabulary_routes.py
+|   |-- quiz_routes.py
+|   |-- progress_routes.py
+|
+|-- services/
+|   |-- wikimedia_service.py
+|   |-- vocabulary_service.py
+|   |-- quiz_service.py
+|   |-- progress_service.py
+|
+|-- templates/
+|   |-- base.html
+|   |-- index.html
+|   |-- languages.html
+|   |-- dashboard.html
+|   |-- lessons.html
+|   |-- lesson.html
+|   |-- vocabulary.html
+|   |-- quiz.html
+|   |-- revision.html
+|   |-- offline.html
+|   |-- data_sources.html
+|
+|-- static/
+|   |-- css/
+|   |   |-- style.css
+|   |   |-- responsive.css
+|   |
+|   |-- js/
+|   |   |-- app.js
+|   |   |-- language.js
+|   |   |-- lesson.js
+|   |   |-- vocabulary.js
+|   |   |-- quiz.js
+|   |   |-- progress.js
+|   |   |-- offline.js
+|   |
+|   |-- images/
+|   |-- icons/
+|   |-- manifest.json
+|   |-- service-worker.js
+|
+|-- data/
+|   |-- seed_vocabulary.json
+|
+|-- scripts/
+|   |-- initialize_db.py
+|   |-- import_vocabulary.py
+|
+|-- tests/
+|   |-- test_languages.py
+|   |-- test_lessons.py
+|   |-- test_vocabulary.py
+|   |-- test_quizzes.py
+|   |-- test_progress.py
+|   |-- test_wikimedia.py
+
+You may adjust this structure if necessary, but preserve clear separation between presentation, business logic, data access, and external API integration.
+
+Do not create unnecessary files just to make the project appear larger.
+
+---
+
+# 13. DEVELOPMENT WORKFLOW
+
+Follow this order.
+
+PHASE 1:
+Set up the Flask application, configuration, database, and basic routing.
+
+PHASE 2:
+Create the design system, homepage, navigation, and language selection.
+
+PHASE 3:
+Implement lessons, vocabulary cards, and the curated dataset.
+
+PHASE 4:
+Implement quizzes, sentence building, saved vocabulary, and progress tracking.
+
+PHASE 5:
+Integrate Wikimedia services with proper error handling, caching, and attribution.
+
+PHASE 6:
+Implement offline support and local progress persistence.
+
+PHASE 7:
+Write and run tests.
+
+PHASE 8:
+Prepare deployment instructions and a complete README.
+
+At each phase:
+- Create working code.
+- Check the file structure.
+- Run appropriate tests.
+- Fix errors before moving forward.
+- Keep the application runnable.
+- Do not replace functional code with placeholders.
+
+If a feature is too large to complete immediately, prioritize a working, testable implementation and document what remains.
+
+---
+
+# 14. FINAL ACCEPTANCE CRITERIA
+
+The project is complete only when:
+
+1. A user can open the website and select Hindi, Bengali, or Marathi.
+2. A user can navigate through actual beginner lessons.
+3. Vocabulary cards show English, native script, transliteration, and meaning.
+4. Examples and translations are properly checked and attributed.
+5. Quizzes work and calculate scores correctly.
+6. Saved vocabulary can be reviewed later.
+7. Progress persists across sessions.
+8. Wikimedia failures do not break the core learning experience.
+9. The website provides meaningful offline functionality.
+10. The application is responsive and accessible.
+11. The project contains setup instructions and an open-source license.
+12. The core application works without paid APIs.
+13. The project contains no TypeScript, JSX, or TSX.
+14. The main workflows have been tested.
+15. The README explains installation, architecture, data sources, attribution, and deployment.
+
+---
+
+# FINAL INSTRUCTION
+
+Start by inspecting the current project directory and existing files.
+
+If a project already exists, preserve working code and integrate the new implementation instead of unnecessarily rebuilding everything.
+
+If no project exists, initialize the application using the specified stack.
+
+Then implement the application end to end.
+
+Do not stop at the design or homepage.
+
+Do not output only a plan.
+
+Create the actual files, implement the features, execute available tests, fix discovered errors, and provide clear instructions for running the finished website.
+
+The final result should be a functional, educational, open-source language-learning platform suitable for a hackathon demonstration and future community development.
